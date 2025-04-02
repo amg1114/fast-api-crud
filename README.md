@@ -3,7 +3,10 @@
 Una API simple para operaciones CRUD construida con FastAPI para gestionar artículos.
 
 ## 🌐 Despliegue en la nube
-La API está desplegada en [Render](https://fastapi-crud-example.onrender.com/docs) (reemplazar con tu URL real de despliegue).
+La API está desplegada en [Render](https://fast-api-crud-44cz.onrender.com/) 
+
+- **Docs**: https://fast-api-crud-44cz.onrender.com/docs
+- **API**: https://fast-api-crud-44cz.onrender.com/
 
 ## 💻 Ejecución local
 

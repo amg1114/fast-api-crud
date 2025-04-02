@@ -35,7 +35,9 @@ This is a simple CRUD API using FastAPI. You can create, read, update, and delet
 - **Response:** JSON object with a success message.
 """
 
-data: list[Item] = []
+data: list[Item] = [
+    Item(id=1, name="Item 1", category="Category 1", description="Description 1", price=10.0, quantity=5, image_url="http://example.com/image1.jpg"),
+]
 app = FastAPI(
     title="FastAPI CRUD Example",
     description=description,
@@ -49,8 +51,14 @@ app = FastAPI(
 
 @app.post("/items/")
 def create_item(item: Item):
+    if any(existing_item.id == item.id for existing_item in data):
+        raise HTTPException(status_code=400, detail="Item with this ID already exists")
     data.append(item)
     return item  
+
+@app.get("/items/")
+def read_items():
+    return data
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int):
@@ -71,9 +79,10 @@ def update_item(item_id: int, item: Item):
 @app.delete("/items/{item_id}")
 def delete_item(item_id: int):
     global data
-    data = [item for item in data if item.id != item_id]
     
     if not any(item.id == item_id for item in data):
         raise HTTPException(status_code=404, detail="Item not found")
+    
+    data = [item for item in data if item.id != item_id]
     
     return {"message": "Item deleted successfully"}
