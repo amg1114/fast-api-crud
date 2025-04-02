@@ -17,13 +17,12 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
    - Gestor de paquetes pip
 
 2. **Instalar dependencias**:
-   ```bash
-   pip install fastapi uvicorn
+   ```pip install -r requirements.txt
    ```
 
 3. **Ejecutar la aplicación**:
-   ```bash
-   uvicorn main:app --reload
+   ```
+    fastapi dev main.py
    ```
 
 4. **Acceder a la API**:
